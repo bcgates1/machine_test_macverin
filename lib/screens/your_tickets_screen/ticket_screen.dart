@@ -92,22 +92,3 @@ class TicketUi extends StatelessWidget {
   }
 }
 
-
-// ElevatedButton(
-            //       onPressed: () {},
-            //       style: ButtonStyle(
-            //           fixedSize: const MaterialStatePropertyAll(Size.fromHeight(45)),
-            //           backgroundColor:
-            //               MaterialStateProperty.all(const Color.fromARGB(255, 31, 31, 31)),
-            //           shape: MaterialStatePropertyAll(
-            //               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
-            //       child: const Row(
-            //         children: [
-            //           Icon(Icons.circle_outlined),
-            //           Text(' Share '),
-            //           Icon(Icons.circle_outlined),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),

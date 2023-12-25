@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:machine_test_macverin/screens/style/global.dart';
 
 import 'screens/your_tickets_screen/ticket_screen.dart';
 
 void main() {
   runApp(
-    DevicePreview(
-      enabled: false,
-      builder: (context) => const MyApp(),
-    ),
+    const MyApp(),
   );
 }
 
@@ -21,11 +17,9 @@ class MyApp extends StatelessWidget {
     /// Set global screen dimensions using MediaQuery.
     Global.sH = MediaQuery.of(context).size.height;
     Global.sW = MediaQuery.of(context).size.width;
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      home: const TicketUi(),
+      home: TicketUi(),
     );
   }
 }
