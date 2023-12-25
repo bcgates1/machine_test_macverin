@@ -5,7 +5,7 @@
 /// sharing tickets.
 
 import 'package:flutter/material.dart';
-import 'package:machine_test_macverin/common_widgets.dart';
+import 'package:machine_test_macverin/screens/common_widgets/common_widgets.dart';
 
 class TicketUi extends StatelessWidget {
   const TicketUi({Key? key}) : super(key: key);

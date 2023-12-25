@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
-import 'package:machine_test_macverin/style/global.dart';
+import 'package:machine_test_macverin/screens/style/global.dart';
 
-import 'ticket_screen.dart';
+import 'screens/your_tickets_screen/ticket_screen.dart';
 
 void main() {
   runApp(
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Set global screen dimensions using MediaQuery.
+    /// Set global screen dimensions using MediaQuery.
     Global.sH = MediaQuery.of(context).size.height;
     Global.sW = MediaQuery.of(context).size.width;
     return MaterialApp(

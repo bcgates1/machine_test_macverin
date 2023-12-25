@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_widget/barcode_widget.dart';
-import 'package:machine_test_macverin/ticket_widget.dart';
-import 'style/global.dart';
+import 'package:machine_test_macverin/screens/your_tickets_screen/widgets/ticket_widget.dart';
+import '../style/global.dart';
 
 /// A custom widget representing a header text.
 class HeaderText extends StatelessWidget {
