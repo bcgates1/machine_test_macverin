@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:barcode_widget/barcode_widget.dart';
+import 'package:flutter/material.dart';
+
 import 'package:machine_test_macverin/screens/your_tickets_screen/widgets/ticket_widget.dart';
+
 import '../style/global.dart';
 
 /// A custom widget representing a header text.
@@ -220,10 +223,20 @@ class TicketDetails extends StatelessWidget {
 
 /// A custom widget representing an elevated button.
 class ElevatedButtonWidget extends StatelessWidget {
-  final String text;
+  final String? text;
   final Color backgroundColor;
+  final Widget? child;
+  final double? height;
+  final double? width;
 
-  const ElevatedButtonWidget({super.key, required this.text, required this.backgroundColor});
+  const ElevatedButtonWidget({
+    Key? key,
+    this.text,
+    required this.backgroundColor,
+    this.child,
+    this.height,
+    this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -231,9 +244,10 @@ class ElevatedButtonWidget extends StatelessWidget {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+        fixedSize: height == null ? null : Size(width!, height!),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
-      child: Text(text),
+      child: text == null ? child! : Text(text!),
     );
   }
 }
@@ -244,6 +258,7 @@ class ElevatedButtonWithIconWidget extends StatelessWidget {
   final IconData icon;
   final Color backgroundColor;
   final double width;
+  final double height;
 
   const ElevatedButtonWithIconWidget({
     super.key,
@@ -251,6 +266,7 @@ class ElevatedButtonWithIconWidget extends StatelessWidget {
     required this.icon,
     required this.backgroundColor,
     required this.width,
+    required this.height,
   });
 
   @override
@@ -260,7 +276,7 @@ class ElevatedButtonWithIconWidget extends StatelessWidget {
       icon: Icon(icon),
       label: Text(text),
       style: ButtonStyle(
-        fixedSize: MaterialStateProperty.all(Size(width, 45)),
+        fixedSize: MaterialStateProperty.all(Size(width, height)),
         backgroundColor: MaterialStateProperty.all(backgroundColor),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -281,14 +297,18 @@ class BottomNavigationBarWidget extends StatefulWidget {
 }
 
 class BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
-  int currentPageIndex = 2; /// to show ticket screen
+  int currentPageIndex = 2;
+
+  /// to show ticket screen
   final GlobalKey bottomNavBarKey = GlobalKey();
   double indicatorLeftPosition = 0;
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      updateIndicatorPosition(); /// to show indicator in ticket screen other wise it will show in home screen
+      updateIndicatorPosition();
+
+      /// to show indicator in ticket screen other wise it will show in home screen
     });
     return Container(
       padding: EdgeInsets.symmetric(horizontal: Global.sW * 0.05, vertical: Global.sH * 0.01),
@@ -352,7 +372,9 @@ class BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
             child: Container(
               width: Global.sW * 0.1,
               height: 2,
-              color: Colors.red[800], /// Color of the indicator line
+              color: Colors.red[800],
+
+              /// Color of the indicator line
             ),
           ),
         ],
@@ -360,10 +382,12 @@ class BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
     );
   }
 
-/// Updates the position of the indicator based on the current page index.
+  /// Updates the position of the indicator based on the current page index.
   void updateIndicatorPosition() {
     final RenderBox renderBox = bottomNavBarKey.currentContext!.findRenderObject() as RenderBox;
-    final double itemWidth = renderBox.size.width / 4; /// Assuming you have 4 items
+    final double itemWidth = renderBox.size.width / 4;
+
+    /// Assuming you have 4 items
     setState(() {
       indicatorLeftPosition = itemWidth * currentPageIndex + (itemWidth / 3.5);
     });

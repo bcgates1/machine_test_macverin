@@ -6,28 +6,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:machine_test_macverin/screens/common_widgets/common_widgets.dart';
+import 'package:machine_test_macverin/screens/style/global.dart';
 
 class TicketUi extends StatelessWidget {
   const TicketUi({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: [
             // Spacer to create space at the top of the screen
-            Spacer(flex: 5),
+            const Spacer(flex: 5),
 
             // HeaderText widget displays the title of the screen
-            HeaderText(text: 'Your tickets'),
+            const HeaderText(text: 'Your tickets'),
 
             // Spacer to add space between the header and buttons
-            Spacer(),
+            const Spacer(),
 
             // Row containing buttons for 'Upcoming' and 'History'
-            Row(
+            const Row(
               children: [
                 Spacer(flex: 10),
 
@@ -45,9 +46,9 @@ class TicketUi extends StatelessWidget {
             ),
 
             // TicketContainer widget displays information about a specific ticket
-            TicketContainer(),
+            const TicketContainer(),
 
-            Spacer(),
+            const Spacer(),
 
             // Row with buttons for 'Download' and 'Share'
             Row(
@@ -57,28 +58,56 @@ class TicketUi extends StatelessWidget {
                 ElevatedButtonWithIconWidget(
                   text: 'Download',
                   icon: Icons.download,
-                  backgroundColor: Color(0xffcd2e4c),
-                  width: 160,
+                  backgroundColor: const Color(0xffcd2e4c),
+                  width: Global.sW * 0.5,
+                  height: Global.sH * 0.06,
                 ),
 
-                // ElevatedButtonWithIconWidget for 'Share'
-                ElevatedButtonWithIconWidget(
-                  text: 'Share',
-                  icon: Icons.circle_outlined,
-                  backgroundColor: Color.fromARGB(255, 31, 31, 31),
-                  width: 160,
-                ),
+                // ElevatedButtonWithWidget for 'Share'
+                ElevatedButtonWidget(
+                  text: null,
+                  height: Global.sH * 0.06,
+                  width: Global.sW * 0.35,
+                  backgroundColor: const Color.fromARGB(255, 31, 31, 31),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.circle_outlined),
+                      Text(' Share '),
+                      Icon(Icons.circle_outlined),
+                    ],
+                  ),
+                )
               ],
             ),
 
             // Spacer to create space at the bottom of the screen
-            Spacer(flex: 3),
+            const Spacer(flex: 3),
           ],
         ),
       ),
 
       // BottomNavigationBarWidget for navigation at the bottom of the screen
-      bottomNavigationBar: BottomNavigationBarWidget(),
+      bottomNavigationBar: const BottomNavigationBarWidget(),
     );
   }
 }
+
+
+// ElevatedButton(
+            //       onPressed: () {},
+            //       style: ButtonStyle(
+            //           fixedSize: const MaterialStatePropertyAll(Size.fromHeight(45)),
+            //           backgroundColor:
+            //               MaterialStateProperty.all(const Color.fromARGB(255, 31, 31, 31)),
+            //           shape: MaterialStatePropertyAll(
+            //               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+            //       child: const Row(
+            //         children: [
+            //           Icon(Icons.circle_outlined),
+            //           Text(' Share '),
+            //           Icon(Icons.circle_outlined),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            // ),
