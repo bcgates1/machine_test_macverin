@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:machine_test_macverin/screens/search_screen/search_location_screen.dart';
 
 import 'package:machine_test_macverin/screens/your_tickets_screen/widgets/ticket_widget.dart';
 
@@ -272,7 +273,9 @@ class ElevatedButtonWithIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: () {},
+      onPressed: () {
+        showLocation(context: context);
+      },
       icon: Icon(icon),
       label: Text(text),
       style: ButtonStyle(
