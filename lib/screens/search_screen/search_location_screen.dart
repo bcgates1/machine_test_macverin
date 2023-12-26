@@ -21,11 +21,12 @@ showLocation({required BuildContext context}) {
           padding: EdgeInsets.all(Global.sH * 0.015),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Row(
+              Row(
                 children: [
-                  Text(
+                  const Text(
                     "Choose your Location",
                     style: TextStyle(
                       fontSize: 18,
@@ -33,8 +34,11 @@ showLocation({required BuildContext context}) {
                       color: Colors.white,
                     ),
                   ),
-                  Spacer(),
-                  Icon(Icons.close, color: Colors.white, size: 25),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.close, color: Colors.white, size: 25),
+                  ),
                 ],
               ),
               SizedBox(height: Global.sH * 0.01),
@@ -68,12 +72,14 @@ showLocation({required BuildContext context}) {
                 ],
               ),
               SizedBox(height: Global.sH * 0.01),
-              const Text("Suggested",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  )),
+              const Text(
+                "Suggested",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
               SizedBox(height: Global.sH * 0.01),
               SizedBox(
                 height: Global.sH * 0.09,
